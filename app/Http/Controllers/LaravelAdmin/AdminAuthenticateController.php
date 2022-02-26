@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class AdminAuthenticateController extends Controller
 {
-    public function registerView()
+    public function registerTemplate()
     {
         return view('LaravelAdmin.adminRegister');
+    }
+
+    public function loginTemplate()
+    {
+        return view('LaravelAdmin.adminLogin');
     }
 }

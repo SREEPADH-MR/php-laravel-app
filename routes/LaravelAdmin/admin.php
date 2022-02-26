@@ -11,5 +11,7 @@ Route::group([
     // 'middleware' => 'jwt.verify',
     'namespace' => 'App\Http\Controllers\LaravelAdmin',
 ], function () {
-    Route::get('register', 'AdminAuthenticateController@registerView');
+    Route::get('register', 'AdminAuthenticateController@registerTemplate')->name('adminRegister');
+
+    Route::get('login', 'AdminAuthenticateController@loginTemplate')->name('adminLogin');
 });
