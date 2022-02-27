@@ -21,8 +21,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::fallback(function () {
-    return view('LaravelAdmin.pageNotFound');
-});
+// Route::fallback(function () {
+//     return view('LaravelAdmin.pageNotFound');
+// });
 
 require __DIR__ . '/auth.php';
