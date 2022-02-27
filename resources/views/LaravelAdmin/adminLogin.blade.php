@@ -38,6 +38,8 @@
                 @endif
                 <form method="POST" action="{{ route('adminLogin') }}" class="row g-3 needs-validation">
 
+                  @csrf
+
                   <div class="col-12">
                     <label for="email" class="form-label">Email</label>
                     <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email" value="{{ old('email') }}">
