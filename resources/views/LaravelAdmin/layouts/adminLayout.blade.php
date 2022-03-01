@@ -27,13 +27,13 @@
   <link href="{{ asset('LaravelAdmin/assets/css/style.css') }}" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <!-- <link href="{{ asset('LaravelAdmin/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('LaravelAdmin/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('LaravelAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('LaravelAdmin/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('LaravelAdmin/assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
     <link href="{{ asset('LaravelAdmin/assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
     <link href="{{ asset('LaravelAdmin/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('LaravelAdmin/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet"> -->
+    <link href="{{ asset('LaravelAdmin/assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.2.2
@@ -60,14 +60,14 @@
   <script src="{{ asset('LaravelAdmin/assets/js/main.js') }} "></script>
 
   <!-- Vendor JS Files -->
-  <!-- <script src="{{ asset('LaravelAdmin/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
+  <script src="{{ asset('LaravelAdmin/assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
   <script src="{{ asset('LaravelAdmin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }} "></script>
   <script src="{{ asset('LaravelAdmin/assets/vendor/chart.js/chart.min.js') }} "></script>
   <script src="{{ asset('LaravelAdmin/assets/vendor/echarts/echarts.min.js') }} "></script>
   <script src="{{ asset('LaravelAdmin/assets/vendor/quill/quill.min.js') }} "></script>
   <script src="{{ asset('LaravelAdmin/assets/vendor/simple-datatables/simple-datatables.js') }} "></script>
   <script src="{{ asset('LaravelAdmin/assets/vendor/tinymce/tinymce.min.js') }} "></script>
-  <script src="{{ asset('LaravelAdmin/assets/vendor/php-email-form/validate.js') }} "></script> -->
+  <script src="{{ asset('LaravelAdmin/assets/vendor/php-email-form/validate.js') }} "></script>
 
   @stack('scripts')
 
