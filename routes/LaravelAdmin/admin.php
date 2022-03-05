@@ -3,19 +3,32 @@
 use Illuminate\Support\Facades\Route;
 
 /*
-| Admin authenticate APIs routes.
+| Admin unauthenticated APIs routes.
 */
 
 Route::group([
-    // 'prefix' => 'admin',
-    // 'middleware' => 'jwt.verify',
+    'prefix' => 'admin',
+    'middleware' => [],
     'namespace' => 'App\Http\Controllers\LaravelAdmin',
+    'controller' => 'AdminAuthenticateController',
 ], function () {
-    Route::get('register', 'AdminAuthenticateController@registerTemplate')->name('adminRegisterTemplate');
-    Route::post('register', 'AdminAuthenticateController@register')->name('adminRegister');
+    Route::get('register', 'registerTemplate')->name('adminRegisterTemplate');
+    Route::post('register', 'register')->name('adminRegister');
 
-    Route::get('login', 'AdminAuthenticateController@loginTemplate')->name('adminLoginTemplate');
-    Route::post('login', 'AdminAuthenticateController@login')->name('adminLogin');
+    Route::get('login', 'loginTemplate')->name('adminLoginTemplate');
+    Route::post('login', 'login')->name('adminLogin');
+});
 
-    Route::get('dashboard', 'AdminAuthenticateController@dashboardTemplate')->name('adminDashboardTemplate');
+/*
+| Admin authenticated APIs routes.
+*/
+
+Route::group([
+    'prefix' => 'admin',
+    'middleware' => ['auth'],
+    'namespace' => 'App\Http\Controllers\LaravelAdmin',
+    'controller' => 'AdminAuthenticateController',
+], function () {
+    Route::get('dashboard', 'dashboardTemplate')->name('adminDashboardTemplate');
+    Route::post('logout', 'logout')->name('adminLogout');
 });

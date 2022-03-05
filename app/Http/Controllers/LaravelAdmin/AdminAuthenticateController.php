@@ -57,7 +57,7 @@ class AdminAuthenticateController extends Controller
         $userData = User::create($userData);
 
         if ($userData) {
-            return redirect()->route('adminLoginTemplate')->with('success', "{$request->name} Successfully Registered");
+            return to_route('adminDashboardTemplate')->with('success', "{$request->name} Successfully Registered");
         }
     }
 
@@ -83,7 +83,7 @@ class AdminAuthenticateController extends Controller
         $validator = $this->adminAuthenticateService->validateAdminLogin($request);
         if ($validator->fails()) return back()->withErrors($validator)->withInput();
 
-        if (!Auth::attempt($request->all())) {
+        if (!Auth::attempt($request->only(['email', 'password']))) {
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
                 'password' => 'The provided credentials do not match our records.',
@@ -91,7 +91,8 @@ class AdminAuthenticateController extends Controller
         }
 
         $request->session()->regenerate();
-        return redirect()->route('adminDashboardTemplate');
+
+        return to_route('adminDashboardTemplate');
     }
 
     /**
@@ -102,5 +103,22 @@ class AdminAuthenticateController extends Controller
     public function dashboardTemplate()
     {
         return view('LaravelAdmin.adminDashboard');
+    }
+
+    /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return to_route('adminLoginTemplate');
     }
 }

@@ -66,7 +66,7 @@
 
                   <div class="col-12">
                     <div class="form-check">
-                      <input class="form-check-input @error('acceptTerms') is-invalid @enderror" name="acceptTerms" type="checkbox" id="acceptTerms">
+                      <input class="form-check-input @error('acceptTerms') is-invalid @enderror" name="acceptTerms" type="checkbox" value="active" id="acceptTerms" @checked(old('acceptTerms'))>
                       <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
                       @error('acceptTerms')
                       <div class="invalid-feedback">{{ $message }}</div>

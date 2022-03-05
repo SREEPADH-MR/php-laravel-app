@@ -213,10 +213,13 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span>Sign Out</span>
-                        </a>
+                        <form method="POST" action="{{ route('adminLogout') }}" class="cursor-logout">
+                            @csrf
+                            <a class="dropdown-item d-flex align-items-center" onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Sign Out</span>
+                            </a>
                     </li>
 
                 </ul><!-- End Profile Dropdown Items -->
