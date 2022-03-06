@@ -9,7 +9,6 @@
 @include('LaravelAdmin.layouts.adminSidebar')
 
 <main id="main" class="main">
-
   <div class="pagetitle">
     <h1>Dashboard</h1>
     <nav>

@@ -36,7 +36,7 @@ class AdminAuthenticateController extends Controller
      */
     public function registerTemplate()
     {
-        return view('LaravelAdmin.adminRegister');
+        return view('LaravelAdmin.templates.Pages.register');
     }
 
     /**
@@ -68,7 +68,7 @@ class AdminAuthenticateController extends Controller
      */
     public function loginTemplate()
     {
-        return view('LaravelAdmin.adminLogin');
+        return view('LaravelAdmin.templates.Pages.login');
     }
 
     /**
@@ -93,16 +93,6 @@ class AdminAuthenticateController extends Controller
         $request->session()->regenerate();
 
         return to_route('adminDashboardTemplate');
-    }
-
-    /**
-     * Display the dashboard view.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function dashboardTemplate()
-    {
-        return view('LaravelAdmin.adminDashboard');
     }
 
     /**

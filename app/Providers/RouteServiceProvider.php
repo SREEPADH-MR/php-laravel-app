@@ -51,6 +51,12 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/LaravelAdmin/admin.php'));
+
+            // Laravel admin templates routes.
+            Route::prefix('admin')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/LaravelAdmin/templates.php'));
         });
     }
 
