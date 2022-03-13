@@ -220,6 +220,7 @@
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
+                        </form>
                     </li>
 
                 </ul><!-- End Profile Dropdown Items -->

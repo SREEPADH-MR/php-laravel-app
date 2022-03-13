@@ -22,7 +22,22 @@ Route::group([
 });
 
 /*
-| Admin authenticated APIs routes.
+| Admin user management APIs routes.
+*/
+
+Route::group([
+    'prefix' => 'admin/user-management',
+    'middleware' => ['auth'],
+    'namespace' => 'App\Http\Controllers\LaravelAdmin',
+    'controller' => 'UserController',
+], function () {
+    Route::get('users/list', 'usersList')->name('adminUsersListTemplate');
+    Route::get('user/read/{userId}', 'userEdit')->name('adminUserEditTemplate');
+    Route::post('user/update/{userId}', 'userUpdate')->name('adminUserUpdate');
+});
+
+/*
+| Admin pages APIs routes.
 */
 
 Route::group([

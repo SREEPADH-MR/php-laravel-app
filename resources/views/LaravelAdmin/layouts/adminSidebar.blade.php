@@ -6,6 +6,26 @@
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#user-management-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Users Management</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="user-management-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('adminUsersListTemplate') }}">
+                        <i class="bi bi-circle"></i><span>Users</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End user-management Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link " href="{{ route('adminDashboardTemplate') }}">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('adminProfileTemplate') }}">
                 <i class="bi bi-person"></i>
                 <span>Profile</span>
@@ -32,13 +52,6 @@
                 <span>Blank</span>
             </a>
         </li><!-- End Blank Page Nav -->
-
-        <li class="nav-item">
-            <a class="nav-link " href="{{ route('adminDashboardTemplate') }}">
-                <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
-            </a>
-        </li><!-- End Dashboard Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
