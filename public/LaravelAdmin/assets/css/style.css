@@ -1078,3 +1078,9 @@ h1, h2, h3, h4, h5, h6 {
 .cursor-logout {
   cursor: no-drop;
 }
+.add-user {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-size: xx-large !important;
+}

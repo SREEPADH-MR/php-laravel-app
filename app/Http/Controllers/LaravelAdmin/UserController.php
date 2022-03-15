@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Services\LaravelAdmin\UserService;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -59,6 +60,39 @@ class UserController extends Controller
     }
 
     /**
+     * Display the admin user create view.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\View\View
+     */
+    public function userCreate(Request $request)
+    {
+        return view('LaravelAdmin.user.userCreate');
+    }
+
+    /**
+     * Handle an incoming create request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function userStore(Request $request)
+    {
+        // check admin user is valid
+        $validator = $this->userService->validateAdminUser($request);
+        if ($validator->fails()) return back()->withErrors($validator)->withInput();
+
+        $userData = $request->all();
+        $userData['password'] = Hash::make($request->password);
+
+        $userCreateResponse = User::create($userData);
+
+        if ($userCreateResponse) {
+            return to_route('adminUsersListTemplate')->with('success', "{$request->name} Successfully Created");
+        }
+    }
+
+    /**
      * Handle an incoming update request.
      *
      * @param  \Illuminate\Http\Request $request
@@ -73,11 +107,37 @@ class UserController extends Controller
         $validator = $this->userService->validateAdminUser($request, $userId);
         if ($validator->fails()) return back()->withErrors($validator)->withInput();
 
+        $userData = $request->all();
+
+        if (isset($request->password)) {
+            $userData['password'] = Hash::make($request->password);
+        }
+
         if ($user) {
-            $userUpdateResponse = tap($user)->update($request->all());
+            $userUpdateResponse = tap($user)->update($userData);
 
             if ($userUpdateResponse) {
                 return to_route('adminUsersListTemplate')->with('success', "{$request->name} Successfully Updated");
+            }
+        }
+    }
+
+    /**
+     * Handle an incoming delete request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $userId
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function userDelete(Request $request, $userId)
+    {
+        $user = User::findOrFail($userId);
+
+        if ($user) {
+            $userDeleteResponse = tap($user)->delete();
+
+            if ($userDeleteResponse) {
+                return to_route('adminUsersListTemplate')->with('success', "{$user->name} Successfully Deleted");
             }
         }
     }

@@ -16,7 +16,7 @@ class UserService
      * @param $request
      * @return Validator $validator
      */
-    public function validateAdminUser($request, $userId)
+    public function validateAdminUser($request, $userId = null)
     {
         $data = $request->all();
 
@@ -24,7 +24,8 @@ class UserService
             $data,
             [
                 'name' => 'required|min:2',
-                'email' => ['required', 'email', Rule::unique('users')->whereNull('deleted_at')->ignore($userId)],
+                'email' => (!empty($userId)) ? ['required', 'email', Rule::unique('users')->whereNull('deleted_at')->ignore($userId)] : ['required', 'email', Rule::unique('users')->whereNull('deleted_at')],
+                'password' => (empty($userId)) ? 'required|min:2' : 'nullable',
             ],
         );
 

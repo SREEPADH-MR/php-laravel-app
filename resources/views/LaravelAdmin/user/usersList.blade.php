@@ -27,6 +27,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Users List</h5>
+                        <a class="btn add-user" href="{{ route('adminUserCreateTemplate') }}" role="button"><i class="bi bi-person-plus"></i></a>
                         @if (session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
@@ -58,11 +59,11 @@
                                     <td>{{ $user->created_at }}</td>
                                     <td>{{ $user->updated_at }}</td>
                                     <td>
-                                        <form action="" method="POST">
+                                        <form action="{{ route('adminUserDelete', ['userId' => $user->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <a class="btn" href="{{ route('adminUserEditTemplate', ['userId' => $user->id]) }}" role="button"><i class="bi-pencil-square"></i></a>
-                                            <button type="submit" class="btn"><i class="bi bi-trash"></i></button>
+                                            <button type="submit" class="btn" onclick="return confirm('Are you sure?')"><i class="bi bi-trash"></i></button>
                                         </form>
                                     </td>
                                     <!-- <td><a class="bi bi-pencil-square" href="#"></a></td>

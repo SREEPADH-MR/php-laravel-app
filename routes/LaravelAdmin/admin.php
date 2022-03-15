@@ -33,7 +33,11 @@ Route::group([
 ], function () {
     Route::get('users/list', 'usersList')->name('adminUsersListTemplate');
     Route::get('user/read/{userId}', 'userEdit')->name('adminUserEditTemplate');
+    Route::get('user/create', 'userCreate')->name('adminUserCreateTemplate');
+
     Route::post('user/update/{userId}', 'userUpdate')->name('adminUserUpdate');
+    Route::post('user/create', 'userStore')->name('adminUserCreate');
+    Route::delete('user/delete/{userId}', 'userDelete')->name('adminUserDelete');
 });
 
 /*
